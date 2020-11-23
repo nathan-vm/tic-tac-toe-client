@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Jogo da velha</h1>
+    <input v-model="name" placeholder="Preencha seu nome de usuário" />
+    <button type="button" @click="Login">Entrar</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  data: function() {
+    return {
+      name: ""
+    };
+  },
+  methods: {
+    Login() {
+      if (this.name) {
+        this.$socket.emit("Login", { name: this.name });
+      }
+    }
+  },
+  sockets: {
+    LoginResponse() {
+      this.$router.push("/select");
+    }
   }
 };
 </script>
