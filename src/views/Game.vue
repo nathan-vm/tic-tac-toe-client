@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="gamePage">
     <h1>Game</h1>
     <Playboard />
   </div>
@@ -18,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.gamePage {
+  background: #eee;
+}
+</style>

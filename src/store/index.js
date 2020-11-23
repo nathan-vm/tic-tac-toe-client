@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     mySocket: {},
+    myTurn: false,
     opponents: [],
     game: {}
   },
@@ -33,6 +34,11 @@ export default new Vuex.Store({
     },
     SOCKET_newOpponent(state, data) {
       console.log("new opponent:", data);
+      const array = state.opponents;
+      const found = array.find(item => item.name === data.name);
+      if (found) {
+        return;
+      }
       state.opponents = [...state.opponents, data];
     },
     SET_myOpponent(state, data) {
@@ -55,6 +61,24 @@ export default new Vuex.Store({
       state.mySocket.isPlaying = true;
       state.mySocket.gameId = data.gameId;
       state.game = data;
+      if (state.mySocket.id === data.whoseTurn) {
+        state.myTurn = true;
+      }
+    },
+    SOCKET_selectCellResponse(state, data) {
+      console.log("selectCellResponse:", data);
+      state.game = data;
+      if (state.mySocket.id === data.whoseTurn) {
+        state.myTurn = true;
+      } else {
+        state.myTurn = false;
+      }
+    },
+    SET_clearGame(state) {
+      state.game = {};
+      state.myTurn = false;
+      state.mySocket.isPlaying = false;
+      state.mySocket.gameId = null;
     },
     SOCKET_opponentDisconnected(state, data) {
       console.log("opponent disconnected:", data.id);
