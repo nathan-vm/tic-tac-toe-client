@@ -11,7 +11,7 @@ export default {
   name: "Game",
   components: { Playboard },
   mounted() {
-    if (!this.$store.mySocket.isPlaying) {
+    if (!this.$store.state.mySocket.isPlaying) {
       this.$router.replace("/");
     }
   }

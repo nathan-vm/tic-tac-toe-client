@@ -36,10 +36,13 @@ export default new Vuex.Store({
       state.opponents = [...state.opponents, data];
     },
     SET_myOpponent(state, data) {
+      console.log("myOpponent", data);
       state.myOpponent = data;
     },
     SOCKET_excludePlayers(state, data) {
-      console.log("opponents start a game:", data.player1, data.player2);
+      console.log(
+        `opponents start a game: player1: ${data.player1}, player2: ${data.player2}`
+      );
       let newOpponents = state.opponents;
       newOpponents = newOpponents.filter(
         opponent => opponent.id !== data.player1 && opponent.id !== data.player2
@@ -49,6 +52,8 @@ export default new Vuex.Store({
     },
     SOCKET_gameStarted(state, data) {
       console.log("game start:", data);
+      state.mySocket.isPlaying = true;
+      state.mySocket.gameId = data.gameId;
       state.game = data;
     },
     SOCKET_opponentDisconnected(state, data) {

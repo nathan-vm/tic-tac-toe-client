@@ -15,7 +15,7 @@
         <td>{{ opponent.draw }}</td>
         <td>{{ opponent.played }}</td>
         <td>
-          <button>➥</button>
+          <button @click="selectOpponent(opponent)">➥</button>
         </td>
       </tr>
     </table>
@@ -34,20 +34,27 @@ export default {
     getOpponents() {
       this.$socket.emit("getOpponents");
     },
-    selectOpponent() {
-      // TODO
+    selectOpponent(opponent) {
+      this.$store.commit("SET_myOpponent", opponent);
+      this.$socket.emit("selectOpponent", { id: opponent.id });
     }
   },
   mounted() {
-    if (!this.$store.state.mySocket.isPlaying) {
+    if (
+      !this.$store.state.mySocket.name ||
+      this.$store.state.mySocket?.isPlaying
+    ) {
       this.$router.replace("/");
       return;
     }
     this.getOpponents();
   },
-  socket: {
+  sockets: {
     alreadyPlaying(data) {
       console.log(data.message);
+    },
+    gameStarted() {
+      this.$router.push("/game");
     }
   }
 };
