@@ -48,7 +48,6 @@ export default {
         ) {
           return "Perdeu";
         }
-        return this.$store.state.game?.playboard;
       } else if (this.$store.state.game?.gameStatus === "draw") {
         return "Empatou";
       }
