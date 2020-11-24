@@ -15,7 +15,7 @@ yarn serve
 ```
 ou
 ```
-npm sun serve
+npm run serve
 ```
 
 ### Caso deseje publicar a aplicação, faça um build com o comando `build`
