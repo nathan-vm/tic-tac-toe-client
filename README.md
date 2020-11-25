@@ -1,24 +1,37 @@
 # tic-tac-toe-client
 
-## Project setup
+## Instale as dependencias com `yarn` ou `npm`
 ```
 yarn install
 ```
+ou
+```
+npm install
+```
 
-### Compiles and hot-reloads for development
+### Rode a aplicação em modo desenvolvimento com o comando `serve`
 ```
 yarn serve
 ```
+ou
+```
+npm run serve
+```
 
-### Compiles and minifies for production
+### Caso deseje publicar a aplicação, faça um build com o comando `build`
 ```
 yarn build
 ```
+ou
+```
+npm run build
+```
 
-### Lints and fixes files
+### Erros de identação no código ? rode o comando `lint`
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ou
+```
+npm run build
+```
