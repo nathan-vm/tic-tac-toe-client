@@ -91,8 +91,8 @@ export default {
 
 <style>
 :root {
-  --O-color: #2196f3;
-  --X-color: #f44336;
+  --O-color: #ffe900;
+  --X-color: #314cb6;
 }
 * {
   margin: 0;
@@ -100,20 +100,10 @@ export default {
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  font-family: sans-serif;
-  height: 100vh;
-  background-color: #eee;
-}
-
 .board {
   display: grid;
-  grid-template-columns: repeat(3, 240px);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 100px);
   gap: 0.5rem;
 }
 
@@ -122,6 +112,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: white;
+  border: 1px solid #000;
   border-radius: 5px;
   font-size: 3rem;
   font-weight: bold;
@@ -130,12 +121,6 @@ body {
 }
 .not-your-turn {
   cursor: not-allowed;
-}
-
-.turn {
-  text-align: center;
-  font-size: 2rem;
-  color: #555;
 }
 
 .cell.O {
@@ -150,15 +135,5 @@ body {
 .cell:not(.O):not(.X):hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.1);
-}
-
-.card-form {
-  border-radius: 5px;
-  min-width: 720px;
-}
-
-.col_end {
-  justify-content: center;
-  text-align: center;
 }
 </style>
